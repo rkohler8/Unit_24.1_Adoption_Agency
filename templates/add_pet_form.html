@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+   <h1 class="display-1 text-center">Add New Employee</h1>
+   <div class="row justify-content-center">
+      <div class="col-md-8">
+      {# {{form.name.label(class_="text-info")}}
+      {{form.name(class_="form-control form-control-lg")}}
+      {{form.state.label(class_="text-danger")}}
+      {{form.state(class_="form-control")}} #}
+         <form method="POST">
+            {{ form.hidden_tag() }}
+            {% for field in form if field.widget.input_type != 'hidden' %}
+               <div class="form-group">
+                  {{ field.label }}
+                  {{ field(class_="form-control") }}
+                  {% for err in field.errors %}
+                     <small class="form-text text-danger">
+                        {{ err }}
+                     </small>
+                  {% endfor %}
+               </div>
+            {% endfor %}
+            <button class="btn btn-success btn-lg" type="submit">Submit</button>
+            <a href="/" class="btn btn-danger btn-lg">Go Back</a>
+         </form>
+      </div>
+   </div>
+</div>
+{% endblock %}
