@@ -1,3 +1,6 @@
 venv/
 __pycache__
 templates/phones.html
+templates/edit_employee_form.html
+templates/add_snack_form.html
+templates/add_employee_form.html

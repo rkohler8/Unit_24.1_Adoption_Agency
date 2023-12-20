@@ -1,6 +1,6 @@
 """Seed file to make sample data for db."""
 
-from models import Department, Employee, Project, EmployeeProject, db
+from models import db, Pet
 from app import app
 
 # Create all tables
@@ -8,30 +8,40 @@ db.drop_all()
 db.create_all()
 
 
-EmployeeProject.query.delete()
-Employee.query.delete()
-Department.query.delete()
-Project.query.delete()
+Pet.query.delete()
+# EmployeeProject.query.delete()
+# Employee.query.delete()
+# Department.query.delete()
+# Project.query.delete()
 
-# Add sample employees and departments
-df = Department(dept_code='fin', dept_name='Finance', phone='555-1000')
-dl = Department(dept_code='legal', dept_name='Legal', phone='555-2222')
-dm = Department(dept_code='mktg', dept_name='Marketing', phone='555-9999')
+# Add sample Petss
+pet1 = Pet(name='Toby', species='Dog', age='13', notes='Toberski', available=False)
+pet2 = Pet(name='Jeffery', species='Cat', age='12', notes='Jeff', available=True)
+pet3 = Pet(name='Brandy', species='Dog', age='12', available=True)
+pet4 = Pet(name='Koda', species='Dog', age='2', available=True)
 
-leonard = Employee(name='Leonard', dept=dl)
-liz = Employee(name='Liz', dept=dl)
-maggie = Employee(name='Maggie', state='DC', dept=dm)
-nadine = Employee(name='Nadine')
-
-db.session.add_all([df, dl, dm, leonard, liz, maggie, nadine])
+db.session.add_all([pet1, pet2, pet3, pet4])
 db.session.commit()
 
-pc = Project(proj_code='car', proj_name='Design Car',
-             assignments=[EmployeeProject(emp_id=liz.id, role='Chair'),
-                          EmployeeProject(emp_id=maggie.id)])
-ps = Project(proj_code='server', proj_name='Deploy Server',
-             assignments=[EmployeeProject(emp_id=liz.id),
-                          EmployeeProject(emp_id=leonard.id, role='Auditor')])
 
-db.session.add_all([ps, pc])
-db.session.commit()
+# df = Department(dept_code='fin', dept_name='Finance', phone='555-1000')
+# dl = Department(dept_code='legal', dept_name='Legal', phone='555-2222')
+# dm = Department(dept_code='mktg', dept_name='Marketing', phone='555-9999')
+
+# leonard = Employee(name='Leonard', dept=dl)
+# liz = Employee(name='Liz', dept=dl)
+# maggie = Employee(name='Maggie', state='DC', dept=dm)
+# nadine = Employee(name='Nadine')
+
+# db.session.add_all([df, dl, dm, leonard, liz, maggie, nadine])
+# db.session.commit()
+
+# pc = Project(proj_code='car', proj_name='Design Car',
+#              assignments=[EmployeeProject(emp_id=liz.id, role='Chair'),
+#                           EmployeeProject(emp_id=maggie.id)])
+# ps = Project(proj_code='server', proj_name='Deploy Server',
+#              assignments=[EmployeeProject(emp_id=liz.id),
+#                           EmployeeProject(emp_id=leonard.id, role='Auditor')])
+
+# db.session.add_all([ps, pc])
+# db.session.commit()
