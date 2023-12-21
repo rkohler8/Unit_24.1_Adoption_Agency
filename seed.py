@@ -15,10 +15,10 @@ Pet.query.delete()
 # Project.query.delete()
 
 # Add sample Petss
-pet1 = Pet(name='Toby', species='Dog', age='13', notes='Toberski', available=False)
-pet2 = Pet(name='Jeffery', species='Cat', age='12', notes='Jeff', available=True)
+pet1 = Pet(name='Toby', species='Dog', age='13', photo_url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1200px-Labrador_Retriever_portrait.jpg", notes='Toberski', available=False)
+pet2 = Pet(name='Jeffery', species='Cat', age='12', photo_url="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/1200px-Cat_November_2010-1a.jpg", notes='Jeff', available=True)
 pet3 = Pet(name='Brandy', species='Dog', age='12', available=True)
-pet4 = Pet(name='Koda', species='Dog', age='2', available=True)
+pet4 = Pet(name='Koda', species='Dog', age='2', photo_url="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg", available=True)
 
 db.session.add_all([pet1, pet2, pet3, pet4])
 db.session.commit()
